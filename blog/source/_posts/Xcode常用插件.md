@@ -27,3 +27,6 @@ tags:
 
 
 
+####	5.FuzzyAutocomplete  代码自动补全 
+![FuzzyAutocomplete](Xcode常用插件/FuzzyAutocomplete.gif)
+##  [链接地址](https://github.com/FuzzyAutocomplete/FuzzyAutocompletePlugin)
