@@ -5,10 +5,10 @@
 # Site
 title: KeepOnline
 subtitle: 挂机打怪ing
-description: 
+description: World peace
 author: MrXiaoYang
 language: zn-ch
-timezone:
+email: mhyang21611@163.com
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -20,7 +20,7 @@ permalink_defaults:
 # Directory
 source_dir: source
 public_dir: public
-tag_dir: tagsf
+tag_dir: tags
 archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
@@ -64,6 +64,7 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: jacman
+
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

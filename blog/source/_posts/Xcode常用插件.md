@@ -4,6 +4,8 @@ date: 2016年 9月 1日 星期四 10时21分
 tags:
 ---
 
+###	插件安装完成重启的时候，应该选择load bundle，而不应该选skip bundle，否则不能再Xcode中找到
+
 ####	1.Alcatraz 一个能帮你管理Xcode插件丶模版及颜色配置的工具。它可以直接集成在Xcode的图形界面中,让你感觉就像在使用Xcode自带的功能一样。
 ![Alcatraz](Xcode常用插件/Alcatraz.png)
 ##  [链接地址](https://github.com/alcatraz/Alcatraz)
@@ -30,3 +32,10 @@ tags:
 ####	5.FuzzyAutocomplete  代码自动补全 
 ![FuzzyAutocomplete](Xcode常用插件/FuzzyAutocomplete.gif)
 ##  [链接地址](https://github.com/FuzzyAutocomplete/FuzzyAutocompletePlugin)
+
+
+####	5.injectionforxcode  UI调试神器 
+![injected](Xcode常用插件/injected.gif)
+##  [链接地址](https://github.com/johnno1962/injectionforxcode)
+
+

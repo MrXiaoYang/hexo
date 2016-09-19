@@ -1,0 +1,597 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>真机相关</title>
+
+</head>
+<body>
+<h1>真机相关</h1>
+
+<hr />
+
+<hr />
+
+<h2>一. 真机调试</h2>
+
+<h3>1. 什么是真机调试?</h3>
+
+<pre><code>简单理解就是将App项目运行到真机上进行测试.
+</code></pre>
+
+<h3>2. 为什么要运行到真机上, 不是可以运行到模拟器上吗?</h3>
+
+<pre><code>真机和模拟器环境的差异
+    &gt; 内存环境,网络环境; 
+    &gt; 传感器: 磁力计，陀螺仪，距离传感器等;
+    &gt; 特定功能：拍照, 打电话，发短信，蓝牙等。
+    &gt; 用户体验不一样
+</code></pre>
+
+<p><strong> APP发布之前一定要做真机调试！！！ </strong></p>
+
+<h3>3. 怎样做真机调试?</h3>
+
+<ol>
+<li><p>Xcode7.0之前,并不是任何人,任何电脑,任何APP,任何真机设备都可以进行真机调试的</p>
+
+<pre><code> 1. 限制人
+     &gt; 必须拥有Apple ID([https://appleid.apple.com])
+     &gt; 加入开发者计划,升级为**开发者账号**([https://developer.apple.com])
+ 2. 限制电脑
+     &gt; 配置与电脑关联的cer证书
+         需要使用需要真机调试的电脑,生成CSR文件
+         CSR文件: 证书签名请求文件
+ 3. 限制App
+     &gt; 配置需要真机测试App的BundleID
+         区分不同APP,就是通过App的唯一标识: BundleID
+ 4. 限制真机设备
+     &gt; 配置需要真机测试的真机UDID
+         苹果每台真机设备都拥有一个唯一标识:UDID
+</code></pre></li>
+<li><p>Xcode7.0之后, 做真机调试, 非常简单 只需要拥有Apple ID即可, 不需要以上限制</p></li>
+</ol>
+
+
+<h3>4. 真机调试注意事项</h3>
+
+<ol>
+<li><p>以上步骤完成后,你会有两个文件:<em>cer文件</em>,<em>MobileProvision</em>文件,只需要双击安装即可.</p>
+
+<pre><code> &gt; cer证书被添加到钥匙串中
+ &gt; 描述文件被安装到Xcode中
+     资源库 -&gt; MobileDevice -&gt; Provisioning Profiles
+</code></pre></li>
+<li><p>必须保证cer证书和描述文件一致</p>
+
+<pre><code> Xcode -&gt; targets -&gt; build setting -&gt; code signing
+</code></pre></li>
+<li><p>创建一个APP,并确认BundleID与配置一致</p>
+
+<pre><code> 如果不一致, 修改XCode项目的BundleID, 与配置一致.
+</code></pre></li>
+<li><p>真机运行时, 如果发现真机设备无法选中, 查看项目最低部署版本是否过高, 大于真机设备的系统版本</p>
+
+<pre><code> 如果真机设备系统版本过高, 则无法选中真机进行运行
+</code></pre></li>
+</ol>
+
+
+<h3>5. 备注补充</h3>
+
+<ol>
+<li><p>开发者账号分类</p>
+
+<pre><code> &gt; 个人账号(99$)==688
+     功能:可以真机调试, 打包测试, 程序发布. ::
+     优点:申请速度快, 给钱就行, 1-3个工作日即可 ::
+     缺点:
+         1&gt; iTunes查看到的是个人信息, 无法间接为公司做宣传 
+         2&gt; 无法创建管理自己的开发团队
+
+ &gt; 公司账号(99$)
+     功能:可以真机调试, 打包测试, 程序发布. ::
+     优点:
+         1&gt; iTunes可以查看企业信息, 间接为公司做宣传 
+         2&gt; 可以创建和管理自己的开发团队
+     缺点:
+         1&gt; 申请复杂,需要”邓白氏”认证
+         2&gt; 申请周期比较长(连同”邓白氏编码”申请, 最好准备30天左右时间)
+
+ &gt; 企业账号(299$)
+     功能:可以真机调试, 打包测试
+     优点:
+         1&gt; 可以在企业内部随意安装到苹果设备,不需要经过AppStore审核
+         2&gt; 可以创建和管理自己的开发团队
+         3&gt; 版本更新迭代比较快, 不需要经过审核
+     缺点:
+         1&gt; 申请复杂,需要”邓白氏”认证
+         2&gt; 申请周期比较长(连同”邓白氏编码”申请, 最好准备30天左右时间)
+         3&gt; 不能使用此证书,将App发布到AppStore
+</code></pre></li>
+</ol>
+
+
+<h3>6. 开发经验</h3>
+
+<ol>
+<li><p>尽量不要从网络渠道以及代申请的公司去申请”邓白氏编码”.</p>
+
+<pre><code>     * 花钱多, 而且申请下来的”邓白氏编码”不一定和苹果服务器数据库内一致, 最终不可用; 浪费时间和金钱
+     * 最正确的做法: 直接和苹果客服MM联系, 她们会告诉你申请流程, 需要提交哪些材料
+     * 客服电话: 400 670 1855
+</code></pre></li>
+<li><p>企业级账号使用场景</p>
+
+<pre><code>     App是针对某一特定人群制定使用.只在企业内部安装, 无需发布到AppStore供他人下载
+</code></pre></li>
+<li><p>真机调试证书只能生成两个!!</p>
+
+<p> <em>(也就意味着,只能绑定两台电脑进行真机调试)</em></p>
+
+<p> <em>注意:如果别人已经配置了两个,而且正在使用,不能随便把别人的证书删除;</em></p>
+
+<pre><code> 解决方案:
+     此时只能使用从已经配置证书的电脑中,导出P12文件,进行共享;
+ 作   用: 
+     让其他电脑设备不需要生成cer证书,也可以进行真机调试;
+</code></pre>
+
+<p> <em>步骤图解</em>
+ <img src="./Device_Images/%E5%AF%BC%E5%87%BAp12%E8%AF%81%E4%B9%A61.png" alt="image" /></p>
+
+<p> <img src="./Device_Images/%E5%AF%BC%E5%87%BAp12%E8%AF%81%E4%B9%A62.png" alt="image" /></p></li>
+<li><p>测试的真机设备UDID最多只能添加100次, 而不是100台</p>
+
+<p> <em>也就是说, 如果你加够了100次之后, 即使删除之前的设备名额, 也无法继续添加</em></p>
+
+<pre><code> 苹果会在下一年, 给你一次删除设备的机会, 你可以删除一些设备, 来恢复一些名额.
+ 但是, 一旦你添加了设备后, 苹果则视为你自动放弃添加设备!!
+</code></pre>
+
+<p> <em>步骤图解(一年才能截一次图呀!!)</em></p>
+
+<p> <img src="./Device_Images/%E9%87%8D%E7%BD%AE%E5%90%8D%E9%A2%9D1.png" alt="image" />
+ <img src="./Device_Images/%E9%87%8D%E7%BD%AE%E5%90%8D%E9%A2%9D2.png" alt="image" />
+ <img src="./Device_Images/%E9%87%8D%E7%BD%AE%E5%90%8D%E9%A2%9D3.png" alt="image" />
+ <img src="./Device_Images/%E9%87%8D%E7%BD%AE%E5%90%8D%E9%A2%9D4.png" alt="image" />
+ <img src="./Device_Images/%E9%87%8D%E7%BD%AE%E5%90%8D%E9%A2%9D5-%E6%B7%BB%E5%8A%A0%E5%90%8D%E9%A2%9D%E6%8F%90%E9%86%92.png" alt="image" /></p></li>
+<li><p>真机调试最终需要的文件</p>
+
+<pre><code> &gt; cer文件(或者p12文件)
+ &gt; MobileProvision文件
+</code></pre></li>
+<li><p>XCode7真机调试</p>
+
+<pre><code> &gt; 只需要AppID,在Xcode7 -&gt; preference -&gt; Account 中添加即可
+ &gt; 然后直接真机调试时,会弹出一个框,提示缺少描述文件. 直接点击”Fix issue”选项,Xcode会自动请求苹果服务器生成对应的描述文件
+</code></pre>
+
+<p> ### <strong>具体的每一步骤截图, 请参考详细步骤</strong></p></li>
+</ol>
+
+
+<hr />
+
+<h2>二. 打包测试</h2>
+
+<h3>1. 什么是打包测试?</h3>
+
+<pre><code>    就是指将项目打包成为.ipa的压缩包, 供指定设备安装测试.
+</code></pre>
+
+<h3>2. 为什么要做打包测试?</h3>
+
+<pre><code>    1. 当进入到测试阶段, 需要专门的测试人员对APP进行测试, 此时需要将APP安装到测试人员的测试设备上, 此时最佳的方案, 就是直接将项目打包成为.ipa包, 供测试人员下载测试;
+</code></pre>
+
+<h3>3. 怎样进行打包测试?</h3>
+
+<ol>
+<li><p>限制人</p>
+
+<pre><code> &gt; 必须拥有Apple ID([https://appleid.apple.com])
+ &gt; 加入开发者计划,升级为**开发者账号**([https://developer.apple.com])
+</code></pre></li>
+<li><p>限制电脑</p>
+
+<pre><code> &gt; 重新配置一个**打包测试**证书(Ad Hoc)
+     需要使用需要打包测试的电脑,生成CSR文件
+     CSR文件: 证书签名请求文件
+</code></pre></li>
+<li><p>限制App</p>
+
+<pre><code> &gt; 配置需要真机测试App的BundleID
+     区分不同APP,就是通过App的唯一标识: BundleID
+</code></pre></li>
+<li><p>限制真机设备</p>
+
+<pre><code> &gt; 配置需要真机测试的真机UDID
+     苹果每台真机设备都拥有一个唯一标识:UDID
+</code></pre></li>
+<li><p>根据2,3,4重新生成<strong>打包测试</strong>描述文件</p></li>
+<li><p>分别安装cer证书和对应的描述文件</p></li>
+<li><p>运行设备选择真机后 选择Product -> Archive</p>
+
+<p> ### <strong>具体的每一步骤截图, 请参考详细步骤</strong></p></li>
+</ol>
+
+
+<hr />
+
+<h2>三. 程序发布</h2>
+
+<h3>1. 什么是程序发布?</h3>
+
+<pre><code>    就是指将APP发布到AppStore, 供指定区域用户下载
+</code></pre>
+
+<h3>2. 为什么要程序发布?</h3>
+
+<pre><code>    你确定要问这个问题??? 好吧, 答案是赚钱.
+</code></pre>
+
+<h3>3. 程序发布的步骤?</h3>
+
+<ol>
+<li><p>限制人</p>
+
+<pre><code> &gt; 必须拥有Apple ID([https://appleid.apple.com])
+ &gt; 加入开发者计划,升级为**开发者账号**([https://developer.apple.com])
+</code></pre></li>
+<li><p>限制电脑</p>
+
+<pre><code> &gt; 重新配置一个**发布**证书
+     需要使用需要程序发布的电脑,生成CSR文件
+     CSR文件: 证书签名请求文件
+</code></pre></li>
+<li><p>限制App</p>
+
+<pre><code> &gt; 配置需要真机测试App的BundleID
+     区分不同APP,就是通过App的唯一标识: BundleID
+</code></pre></li>
+<li><p>根据2,3重新生成<strong>发布</strong>描述文件</p>
+
+<p> <strong> 注意: 程序发布, 是发布到AppStore, 所以不会有限制设备一项</strong></p></li>
+<li><p>在开发中心新建App, 并填写App相关的信息</p>
+
+<pre><code> 就比如我们下载别人的app,就会发现里面有预览图片, app版本,以及功能简介等信息, 那这些信息都是我们在这一步填写的
+</code></pre></li>
+<li><p>写好一个应用程序</p>
+
+<pre><code> 注意:必须要有程序图标,启动图片等,否则上传会失败
+</code></pre></li>
+<li><p>运行设备选择真机后 选择Product -> Archive</p></li>
+<li><p>选择 submit 打包项目,上传构建版本</p></li>
+<li><p>提交审核</p></li>
+</ol>
+
+
+<h3>4. 经验补充</h3>
+
+<ol>
+<li><p>常规审核周期</p>
+
+<pre><code> 审核周期2至20天不等, 而且他们碰到节假日还放假.
+</code></pre></li>
+<li><p>加急审核</p>
+
+<pre><code> 概念: 简单理解就是你联系苹果审核人员,跟他们说明理由,让他们优先给你们审核
+ 地址: [https://developer.apple.com/contact/app-store/?topic=expedite]
+</code></pre></li>
+<li><p>加急审核注意事项(亲身体验)</p>
+
+<pre><code> &gt; 加急审核,审核更加严格,亲身体验
+
+ &gt; 首次发布,一般加急审核不给审批
+
+ &gt; 加急审核申请一定要理由足够强大(一般是上线后发现重大Bug)
+
+ &gt; 加急审核好爽, 只要你申请加急审核通过了. 那么只要你的app没有上架,就会一直处于加急审核状态, 一直到你上架为止, 此次加急才算结束(曾经有连续被拒7次经验,历时才10天)
+
+ &gt; 加急审核有次数限制(一年好像有3次, 我只用过一次,没测试过)
+</code></pre>
+
+<p> <strong>具体步骤, 请查看详情的步骤截图</strong></p></li>
+</ol>
+
+
+<hr />
+
+<h2>四. 内购和广告</h2>
+
+<h3>1. 什么是内购?</h3>
+
+<pre><code>    内购就是指,在APP内购买某些产品
+        如果你在App中销售的商品,跟App有关(例如植物大战僵尸中的道具,需要开启关卡,拥有某种技能等等).那么,苹果规定,必须通过内购方式购买.
+    内购分成: 3 : 7
+</code></pre>
+
+<h3>2. 为什么做内购?</h3>
+
+<pre><code>    1. 开发者创收的一种模式: free + 内购
+    2. 某些业务必须使用内购
+</code></pre>
+
+<h3>3. 内购的产品类型?</h3>
+
+<ol>
+<li><p>非消耗品(Nonconsumable)</p>
+
+<pre><code> 买了就一直有,不会消耗,例如开启关卡
+ 一般指的是在游戏中一次性购买并拥有永久访问权的物品或服务。非消耗品物品可以被用户再次下载，并且能够在用户的所有设备上使用
+</code></pre></li>
+<li><p>消耗品(Consumable)</p>
+
+<pre><code> 买了就用，用了就没
+ 专为支持可消耗的物品或服务设计的，消耗品购买不可被再次下载，根据其特点，消耗品不能在用户的设备之间跨设备使用，除非自定义服务在用户的账号之间共享这些信息
+</code></pre></li>
+<li><p>其他类型</p>
+
+<pre><code> &gt; 以下三种类别在iBooks中使用，目前iBooks不支持大陆市场
+     免费订阅（Free subscriptions）
+     自动续费订阅（Auto-renewing subscriptions）
+     非自动续费订阅（Nonrenewing subscriptions）
+</code></pre></li>
+<li><p>内购的流程
+ <em>类似于商场购物流程, 参照下图</em>
+ <img src="./Device_Images/%E5%86%85%E8%B4%AD%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="image" /></p></li>
+<li><p>内购演练</p>
+
+<pre><code> 1. 在App管理中心,创建一个App,并填写App信息
+     注意: 此处创建的App时,填写套装ID,时,必须选择可以内购的套装ID
+
+ 2. 创建内购商品,并添加到App,指定此App,可以销售哪些商品
+     注意: 创建内购商品的前提,是你已经填写了税务/银行信息,否则的话,无法创建
+
+ 3. 添加用于测试内购的测试账号
+
+ 4. 创建App项目,开始开发
+
+ 5. 代码实现内购流程
+
+     (1) 从APP服务器请求数据列表, 并行苹果服务器请求可以销售的商品列表
+
+         [XMGDataTool getGoodsWithResult:^(NSArray *goods) {
+             NSArray *ids = [goods valueForKeyPath:@"goodID"];
+             // 请求哪些商品可以卖
+             NSSet *idSet = [NSSet setWithArray:ids];
+             SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:idSet];
+             request.delegate = self;
+             [request start];
+         }];
+
+     (2) 在代理方法中获取并显示可销售列表
+
+         - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
+         {
+             self.products = response.products;
+         }
+
+     (3) 用户购买商品, 并监听商品交易状态
+
+         // 取出商品
+         SKProduct *product = self.products[indexPath.row];
+
+         // 购买商品
+         SKPayment *payMent = [SKPayment paymentWithProduct:product];
+
+         // 把凭证加入到队列, 等待用户付款
+         [[SKPaymentQueue defaultQueue] addPayment:payMent];
+
+         // 设置监听者, 监听整个交易状态
+         [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+
+      (4) 实现监听交易状态方法
+
+         // 交易状态发生变化时调用
+         - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray&lt;SKPaymentTransaction *&gt; *)transactions
+         {
+
+         [transactions enumerateObjectsUsingBlock:^(SKPaymentTransaction * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) 
+         {
+
+             //  SKPayment *payment , 小票 , 包含商品
+             //  SKPaymentTransactionState transactionState 交易状态
+         switch (obj.transactionState) {
+             case  SKPaymentTransactionStatePurchasing:
+                 NSLog(@"正在付款");
+             break;
+
+             case  SKPaymentTransactionStatePurchased:
+                 {
+                     NSLog(@"付款结束");
+                     [queue finishTransaction:obj];
+                     break;
+                 }
+             case  SKPaymentTransactionStateFailed:
+                 {
+                     NSLog(@"交易失败");
+                     [queue finishTransaction:obj];
+                     break;
+                 }
+             case  SKPaymentTransactionStateRestored:
+                 NSLog(@"恢复购买");
+                 break;
+             case SKPaymentTransactionStateDeferred:
+                 NSLog(@"推迟付款");
+                 break;
+
+             default:
+                 break;
+         }
+        }];
+      }
+</code></pre>
+
+<p> <strong>具体步骤, 请参照步骤截图详解</strong></p></li>
+</ol>
+
+
+<h3>4. 广告</h3>
+
+<ol>
+<li><p>广告的作用?</p>
+
+<pre><code>  属于创收的一种方式, 你在App内展示广告,苹果会付费给你,分成从原来的4:6 到 3:7
+</code></pre></li>
+<li><p>如何展示广告</p>
+
+<pre><code> - 导入框架: iAd.framework
+ - 添加控件: ADBannerView 
+ - 实现代理 ADBannerViewDelegate,优化用户体验
+</code></pre></li>
+</ol>
+
+</body>
+</html>
